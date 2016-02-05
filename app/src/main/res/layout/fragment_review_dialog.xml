@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:padding="20dp"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:text="Movie Name"
+
+        android:id="@+id/mnamereview"
+        android:textColor="#000000"
+        android:textStyle="normal"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/darker_gray"/>
+
+    <!--
+    <ImageView
+        android:id="@+id/urlreview"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:src="@drawable/ic_follow" />
+    -->
+    <TextView
+        android:id="@+id/yourreview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:text="Your Review"
+        android:textSize="15dp"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/com_facebook_blue"
+        android:textStyle="italic"
+         />
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:maxLines="4"
+        android:id="@+id/editreview"
+        android:layout_marginTop="5dp"
+        />
+
+    <TextView
+        android:id="@+id/yourrating"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:text="Your Rating"
+        android:textSize="15dp"
+        android:textColor="@color/com_facebook_blue"
+        android:textStyle="italic"
+        android:layout_marginTop="5dp"
+        />
+
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ratingBar"
+
+        android:layout_marginTop="5dp"
+
+         />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/cancelreview"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="Cancel"
+
+            android:layout_marginTop="5dp"
+            android:textColor="@color/window_background"
+            android:background="@color/com_facebook_blue"
+            />
+        <Button
+            android:id="@+id/savereview"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="Save"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:textColor="@color/window_background"
+            android:background="@color/com_facebook_blue"
+            />
+    </LinearLayout>
+
+</LinearLayout>

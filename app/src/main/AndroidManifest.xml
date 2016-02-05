@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2015 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.support.android.designlibdemo" >
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
+
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+
+    <!-- permission needed to check app state background / foreground -->
+    <uses-permission android:name="android.permission.GET_TASKS" />
+
+    <!--
+      IMPORTANT: Change "info.androidhive.parsenotifications.permission.C2D_MESSAGE" in the lines below
+      to match your app's package name + ".permission.C2D_MESSAGE".
+    -->
+    <permission
+        android:name="com.support.android.designlibdemo.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.support.android.designlibdemo.permission.C2D_MESSAGE" />
+
+    <application
+        android:name="com.support.android.designlibdemo.AppController"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/Theme.DesignDemo" >
+        <activity
+            android:name=".SampleProfileActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            >
+
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+
+
+        </activity>
+        <activity
+            android:name="com.support.android.designlibdemo.MainActivity"
+            android:label="@string/app_name" >
+
+        </activity>
+        <activity
+            android:name=".CheeseDetailActivity"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+
+        <activity
+            android:name=".MyDetailActivity"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+
+        <activity
+            android:name=".MyFriendDetailActivity"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+
+        <activity
+            android:name="com.parse.ui.ParseLoginActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:theme="@style/Base.Theme.DesignDemo"
+            >
+            <meta-data
+                android:name="com.parse.ui.ParseLoginActivity.PARSE_LOGIN_ENABLED"
+                android:value="true"/>
+            <meta-data
+                android:name="com.parse.ui.ParseLoginActivity.PARSE_LOGIN_EMAIL_AS_USERNAME"
+                android:value="true"/>
+            <meta-data
+                android:name="com.parse.ui.ParseLoginActivity.FACEBOOK_LOGIN_ENABLED"
+                android:value="true"/>
+            <meta-data
+                android:name="com.parse.ui.ParseLoginActivity.TWITTER_LOGIN_ENABLED"
+                android:value="true"/>
+        </activity>
+
+
+        <activity android:name="com.facebook.FacebookActivity"
+            android:configChanges=
+                "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:label="@string/app_name" />
+
+
+        <meta-data
+            android:name="com.parse.APPLICATION_ID"
+            android:value="@string/parse_app_id" />
+        <meta-data
+            android:name="com.parse.CLIENT_KEY"
+            android:value="@string/parse_client_key" />
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id"/>
+
+        <provider android:authorities="com.facebook.app.FacebookContentProvider898603873510142"
+            android:name="com.facebook.FacebookContentProvider"
+            android:exported="true"
+            />
+
+
+        <provider
+            android:name=".data.UserProvider"
+            android:authorities="com.support.android.designlibdemo.data"
+            />
+
+
+        <service
+            android:name=".LocalWordService"
+            android:label="HelloService" >
+        </service>
+
+        <service android:name="com.parse.PushService" />
+        <!--
+        <receiver android:name=".MyScheduleReceiver" >
+
+                <intent-filter android:priority="999">
+                    <action android:name="android.intent.action.BOOT_COMPLETED" />
+                    <action android:name="android.intent.action.PACKAGE_ADDED"/>
+                    <action android:name="android.intent.action.PACKAGE_REMOVED"/>
+                    <data android:scheme="package"/>
+                </intent-filter>
+
+        </receiver>
+        -->
+        <receiver android:name=".MyStartServiceReceiver" >
+            <intent-filter android:priority="999">
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.PACKAGE_ADDED"/>
+                <action android:name="android.intent.action.PACKAGE_REMOVED"/>
+                <data android:scheme="package"/>
+            </intent-filter>
+        </receiver>
+
+
+        <receiver android:name="com.parse.ParseBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name="com.parse.GcmBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
+                <!-- IMPORTANT: Change "info.androidhive.parsenotifications" to match your app's package name. -->
+                <category android:name="com.support.android.designlibdemo" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".CustomPushReceiver" android:exported ="false">
+            <intent-filter>
+
+                <action android:name="com.parse.push.intent.RECEIVE" />
+                <action android:name="com.parse.push.intent.OPEN" />
+                <action android:name="com.parse.push.intent.DELETE" />
+            </intent-filter>
+        </receiver>
+        <!--
+        <receiver android:name="com.parse.ParsePushBroadcastReceiver" android:exported="false">
+            <intent-filter>
+                <action android:name="com.parse.push.intent.RECEIVE" />
+                <action android:name="com.parse.push.intent.DELETE" />
+                <action android:name="com.parse.push.intent.OPEN" />
+            </intent-filter>
+        </receiver>
+        -->
+    </application>
+
+</manifest>
