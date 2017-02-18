@@ -145,9 +145,9 @@
 
 
         <provider
-            android:name=".data.UserProvider"
-            android:authorities="com.support.android.designlibdemo.data"
-            />
+        android:name=".data.UserProvider"
+        android:authorities="com.support.android.designlibdemo.data"
+        />
 
 
         <service
